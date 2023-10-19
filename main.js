@@ -2,37 +2,45 @@
 // │ Your code here! │	
 // └─────────────────┘
 //1.
-const isAdmin = function(obj){
-    return obj.userRole === 'ADMIN'
+ function isAdmin(user){
+    return user.userRole === 'ADMIN'
 
 }
 //2.
-const getEmail = function(obj){
-    let firstInitial = obj.firstName.toLowerCase()[0]
-    let lastNameLowerCase = obj.lastName.toLowerCase()
+const getEmail = function(user){
+    let firstInitial = user.firstName.toLowerCase()[0]
+    let lastNameLowerCase = user.lastName.toLowerCase()
     return firstInitial + lastNameLowerCase + '.prsvr@gmail.com'
 }
 //3.
 const getPlaylistLength = function(playList){
-    let length = 0;
-    playList.forEach(function(song))
-      length += song.songs.length;
     
-    return length;
+    return playList.songs.length
   }
   //4.
-  const getHardestHomework = function(homework){
-    let highest = 0;
-    homework.forEach(function(assignment){
-      if(assignment.difficulty > lowest){
-        lowest = assignment.difficulty;
-      }
-    });
-    return lowest;
+  const getHardestHomework = function(arr){
+    if(arr.length === 0){
+        return ''
+    }
+    let hardestHomework = arr[0].name
+    let lowestScore = arr[0].averageScore
+    for(let i = 1; i < arr.length; i++){
+        if(arr[i].averageScore < lowestScore){
+            lowestScore = arr[i].averageScore
+            hardestHomework = arr[i].name
+        }
+    }
+    return hardestHomework
+
   }
   //5.
-  const createPhonebook = function(){
-    
+  const createPhonebook = function(names, numbers){
+    let phonebook = {}
+    for(let i = 0; i < names.length; i++){
+        phonebook[names[i]] = numbers[i]
+    }
+    return phonebook
+
   }
   
 
